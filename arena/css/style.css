@@ -1,0 +1,122 @@
+html, body {
+  height:100%;
+}
+
+body {
+  margin: 0;
+  background-image:url(../img/cavern.jpg);
+  background-position:center bottom;
+  background-size:cover;
+}
+
+h1, h2, h3, h4, h5, h6 ul {
+  margin: 0;
+}
+
+header {
+  color:#ffffff;
+  background-color:hsla(100, 30%, 60%, 1);
+}
+
+nav {
+  display:flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav li a {
+  text-decoration:none;
+  color:inherit;
+  padding:10px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  background-color:hsla(0, 0%, 100%, .25);
+  margin-left: 10px;
+}
+
+#table {
+  display:flex;
+  justify-content: center;
+  padding: 60px, 0 30px;
+}
+
+table {
+  background-color:hsla(0, 0%, 100%, .5);
+  box-shadow: 0 0 0 10px hsla(0, 0%, 100%, .5);
+}
+
+table td {
+  width:5vw;
+  height:5vw;
+  background-color:white;
+}
+
+#text {
+  padding: 30px 0;
+}
+
+form {
+  width: 50%;
+  margin:0 auto;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#hud {
+  display:flex;
+}
+
+#hud div {
+  flex:1;
+}
+
+.inventory {
+  color:#fff;
+  text-align:center;
+}
+
+.inventory ul {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.inventory li {
+  padding: 5px 10px;
+  background-color:hsla(0, 0%, 9%, .75);
+  margin: 0 10px 10px 0;
+  list-style:none;
+  border:1px solid white;
+}
+
+.nav span {
+  display:flex;
+  justify-content:center;
+}
+
+.nav span:nth-child(2){
+  background-image:url(../img/compass.png);
+  background-position:center;
+  background-size:40px;
+  background-repeat:no-repeat;
+  justify-content: space-around;
+}
+
+.nav a {
+  text-decoration:none;
+  color:#000000;
+  background-color:hsla(0, 0%, 90%, 1);
+  padding:10px 20px;
+  border: 1px solid #000000;
+}
