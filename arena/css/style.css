@@ -112,23 +112,11 @@ table {
 
 table td {
 
-    box-sizing: border-box;
-
-
-
-}
-
-table td {
-
     width: 3vw;
 
     height: 3vw;
 
     background-color: hsla(0, 0%, 0%, .75);
-
-}
-
-table td {
 
     border-width: 2px;
 
@@ -136,12 +124,17 @@ table td {
 
     border-color: transparent;
 
+    box-sizing: border-box;
 }
 
 table td.active {
 
     background-color: white !important;
 
+}
+
+table td.exit {
+  background-color:red !important;
 }
 
 table td.visited {
