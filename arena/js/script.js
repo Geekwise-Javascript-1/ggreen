@@ -8,6 +8,29 @@ var maze, thisCell, exitCell, cells;
 n.addEventListener('click', function(e){
   moveNorth();
 });
+
+function moveNorth(){
+statusCell(thisCell, "inactive");
+thisCell = [thisCell[0]-1, thisCell[1] ];
+statusCell(thisCell, "active");
+checkWalls(cells);
+}
+
+function statusCell(cell, status){
+switch(status){
+  case "active":
+    maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.add("active");
+    break;
+  case "inactive":
+    maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.remove("active");
+  break;
+  case "finish":
+    maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.add("exit");
+  break;
+  }
+  return cell;
+}
+
 function moveNorth(){
   // console.log('go north');
   // console.log(thisCell);
@@ -136,8 +159,8 @@ var grid = function(x, y){
 function gridStart(cells, path){
   gridBuilder(cells);
 
-  thisCell = theCell(path[0]);
-  exitCell = leaveCell(path[path.length -1]);
+  thisCell = theCell(path[0], "active");
+  exitCell = statusCell(path[path.length -1], "finish");
 
   checkWalls(cells);
 }
@@ -180,6 +203,28 @@ function gridBuilder(cells){
   }
 }
 
+function moveNorth(){
+statusCell(thisCell, "inactive");
+thisCell = [thisCell[0]-1, thisCell[1] ];
+statusCell(thisCell, "active");
+checkWalls(cells);
+}
+
+function statusCell(cell, status){
+switch(status){
+  case "active":
+    maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.add("active");
+    break;
+  case "inactive":
+    maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.remove("active");
+  break;
+  case "finish":
+    maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.add("exit");
+  break;
+  }
+  return cell;
+}
+
 function theCell(cell){
   maze.firstChild.childNodes[cell[0]].childNodes[cell[1]].classList.add('active');
   return cell;
@@ -212,66 +257,75 @@ function checkWalls(cells){
     }
   }
 }
+
+var hero = {
+  name: "Vegeta",
+  power: 100
+};
+var min = 1;
+var max = 100;
+var Enemy = function(name, power, pos){
+  this.name = name,
+  this.power = power
+}
 /*
-var table = document.getElementById('table');
-var form = document.createElement('form');
+function randPow(min, max){
+  var pow = Math.floor(Math.random() * 100) + 1;
+  // var range = Math.floor(Math.random() * )
+}
 
-var label1 = document.createElement('label');
-label1.textContent = "Your Name";
-label1.setAttribute('for', 'name');
-var input1 = document.createElement('input');
-// assign attribute type to equal text
-input1.type = 'text';
-// assign attribute id to equal name
-input1.id = 'name';
-input1.placeholder = "Your Name Here";
+  this.y = pos[0],
+  this.x = pos[1]
 
-var label2 = document.createElement('label');
-// add textContent for label2 text = your email
-label2.textContent = "Your Email";
-// assign attribute for to equal email
-label2.setAttribute('for', 'email');
-var input2 = document.createElement('input');
-// assign attr id === email
-input2.id = 'Email';
-// assign adder type === email
-input2.type = 'Email';
-// assign placeholder === your email here
-input2.placeholder = 'Your Email Here';
-var submit = document.createElement('input');
-// assign attr id === submit
-submit.id = 'submit';
-// assign attr type === submit
-submit.type = 'submit';
-// assign attr value === Submit your answer
-submit.value = 'Submit';
-
-
-label1.appendChild(input1);
-label2.appendChild(input2);
-form.appendChild(label1);
-form.appendChild(label2);
-form.appendChild(submit);
-
-// append input2 to label2 && label2 to form
-table.appendChild(form);
-
-var formI1 = document.getElementById('name');
-var formI2 = document.getElementById('email');
-var formBtn = document.getElementById('submit');
-
-// add event listener to ??
-// concat values from formI1 + formI2
-// alert result
-formBtn.addEventListener('click', function(e){
-  // e.preventDefault();
-  alert(formI1.value + ":" + formI2.value);
-});
+  this.test = function(msg){
+    return msg;
+  }
+};
 */
-// or
+function randCell(){
+  var y = Math.floor(Math.random() * cells.length);
+  var x = Math.floor(Math.random() * cells[0].length);
+  return [y, x];
+}
 
+var enemy1 = new Enemy("Frieza", /*randPow(30,80)*/80, randCell());
+var enemy2 = new Enemy("Nappa", /*randPow(10,50)*/20, randCell());
+//_____________________________^^Call random power function here
+
+
+// console.log(hero);
+// console.log(enemy1);
+// console.log(enemy2);
 /*
-submit.addEventListener('click', function(){
-  alert(input1.value + ":" + input2.value);
-});
+if( !localStorage.getItem("username") && !localStorage.getItem("lastname")){
+  var name = prompt("Enter your name");
+  var lName = prompt("Enter your last name");
+  var password = prompt("Enter your password");
+
+  setLoginStorage();
+}
+else{
+  alert("Welcome back " + getItem("username"));
+}
+
+function setLoginStorage(){
+  localStorage.setItem("username", name);
+  localStorage.setItem("lastname", lName);
+  sessionStorage.setItem("password", password);
+}
 */
+// check if localStorage hero exists
+// save hero to localStorage
+// save enemies in sessionStorage
+
+if(!localStorage.getItem("hero")){
+  setCharStorage();
+}
+function setCharStorage(){
+  localStorage.setItem("hero", JSON.stringify(hero));
+  sessionStorage.setItem("enemy1", JSON.stringify(enemy1));
+  sessionStorage.setItem("enemy2", JSON.stringify(enemy2));
+};
+
+
+console.log(JSON.parse(localStorage.getItem("hero")));
