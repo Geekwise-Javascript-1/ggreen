@@ -94,6 +94,23 @@ function enableWest(wall){
   console.log(wall);
 }
 
+addEventListener('keypress', function(evt){
+  evt.preventDefault();
+  console.log(evt);
+  if(evt.keyCode === 38 && !n.disabled){
+    moveNorth();
+  }
+  else if(evt.keyCode === 39 && !e.disabled){
+    moveEast();
+  }
+  else if(evt.keyCode === 40 && !s.disabled){
+    moveSouth();
+  }
+  else if(evt.keyCode === 37 && !w.disabled){
+    moveWest();
+  }
+});
+
 var grid = function(x, y){
   var totalCells = x * y;
   cells = [];
